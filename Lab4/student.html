@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   
+    <style>
+        button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        #content {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <button id="showMarksheet">Show Marksheet</button>
+    <button id="showAddress">Show Address</button>
+    <div id="content"></div>
+
+    <script>
+
+        //program 3
+     //     var client = new XMLHttpRequest();
+     //client.open('GET', 'demo.cgi');
+   //client.send();
+   
+      /*  $(document).ready(function() {
+            $('#showMarksheet').click(function() {
+                $('#content').load('marksheet.html');
+            });
+            $('#showAddress').click(function() {
+                $('#content').load('address.html');
+            });
+        });
+        */
+
+
+        $(document).ready(function() {
+    $('#showMarksheet').click(function() {
+        $.ajax({
+            url: 'marksheet.html',  
+            type: 'GET',            
+            dataType: 'html',       
+            beforeSend: function() {
+                // Before sending the request, show a loading message
+                $('#content').html('<p>Loading marksheet...</p>');
+                alert('Loading Marksheet..')
+            },
+            success: function(data) {
+                // Display the fetched data in the <div> with id "content"
+                $('#content').html(data);
+            },
+            error: function(xhr, status, error) {
+                // Handle any errors that occurred during the request
+                $('#content').html('<p>An error occurred while loading the marksheet.</p>');
+                console.error(error);
+            },
+            complete: function() {
+                // Code to run regardless of success or failure
+                alert('Marksheet request complete');
+            }
+        });
+    });
+
+    $('#showAddress').click(function() {
+        $.ajax({
+            url: 'address.html',    // The URL of the HTML file to fetch
+            type: 'GET',            // The HTTP method
+            dataType: 'html',       // The type of data expected from the server
+            beforeSend: function() {
+                // Before sending the request, show a loading message
+                $('#content').html('<p>Loading address...</p>');
+                alert('Loading address.....')
+   
+            },
+            success: function(data) {
+                // Display the fetched data in the <div> with id "content"
+                $('#content').html(data);
+            },
+            error: function(xhr, status, error) {
+                // Handle any errors that occurred during the request
+                $('#content').html('<p>An error occurred while loading the address.</p>');
+                console.error(error);
+            },
+            complete: function() {
+                alert('Address request complete');
+               
+            }
+        });
+    });
+});
+
+    </script>
+</body>
+</html>

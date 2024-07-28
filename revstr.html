@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>String Reversal</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function reverseString(str) {
+                return str.split('').reverse().join('');
+            }
+
+            $('#reverseString').click(function() {
+                const inputVal = $('#stringInput').val().trim();
+                if (inputVal === '') {
+                    $('#result').text('Please enter a string.');
+                    return;
+                }
+
+                const reversedStr = reverseString(inputVal);
+                $('#result').text(`Reversed string: '${reversedStr}'`);
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Reverse String</h1>
+    <input type="text" id="stringInput" placeholder="Enter a string">
+    <button id="reverseString">Reverse String</button>
+    <p id="result"></p>
+</body>
+</html>

@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery ajaxSetup() Example</title>
+  <script src="jquery/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+  <button id="loadData">Load Data</button>
+  <div id="result"></div>
+
+  <script>
+    $(document).ready(function() {
+      // Set up default AJAX settings
+      $.ajaxSetup({
+        url: "data.json",       // Default URL for AJAX requests
+        method: "GET",          // Default method
+        dataType: "json",       // Default data type
+        beforeSend: function() { // Function to run before the request is sent
+          $("#result").html("Loading...");
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          $("#result").html("An error occurred: " + textStatus);
+        }
+      });
+
+      // Trigger AJAX request on button click
+      $("#loadData").click(function() {
+        $.ajax({
+          success: function(data) {
+            // Display the JSON data in the result div
+            $("#result").html(JSON.stringify(data, null, 2));
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

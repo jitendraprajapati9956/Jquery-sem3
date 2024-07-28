@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery load() Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+  <button id="loadContent">Load Content</button>
+  <div id="result"></div>
+
+  <script>
+    $(document).ready(function() {
+      $("#loadContent").click(function() {
+        $("#result").load("Session1.html");
+      });
+    });
+  </script>
+
+</body>
+</html>

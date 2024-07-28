@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        .calculator {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .display {
+            width: 100%;
+            height: 50px;
+            text-align: right;
+            margin-bottom: 10px;
+            font-size: 24px;
+            padding-right: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .buttons button {
+            width: 100%;
+            height: 50px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .buttons button:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculator">
+    <input type="text" class="display" disabled>
+    <div class="buttons">
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>/</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>*</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>-</button>
+        <button>0</button>
+        <button>.</button>
+        <button>=</button>
+        <button>+</button>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var display = $('.display');
+        var currentValue = '';
+        var operator = '';
+        var operand1 = '';
+        var operand2 = '';
+
+        $('.buttons button').on('click', function() {
+            var value = $(this).text();
+            
+            if ($.isNumeric(value) || value === '.') {
+                currentValue += value;
+                display.val(currentValue);
+            } else if (value === '+' || value === '-' || value === '*' || value === '/') {
+                operand1 = currentValue;
+                operator = value;
+                currentValue = '';
+            } else if (value === '=') {
+                operand2 = currentValue;
+                var result = eval(operand1 + operator + operand2);
+                display.val(result);
+                currentValue = result;
+                operand1 = '';
+                operator = '';
+                operand2 = '';
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

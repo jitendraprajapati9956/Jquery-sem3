@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sum of Two No</title>
+    <script>
+
+
+        function showSum() {
+              var num1 = parseInt(document.getElementById("text1").value);
+            var num2 = parseInt(document.getElementById("text2").value);
+
+            var sum = num1 + num2;
+
+         
+            //  Display as an alert
+            alert("Sum: " + sum);
+
+            //  Display in a third text box
+            document.getElementById("resultTextBox").value = sum;
+
+            //  Display in an <h3> element
+            document.getElementById("resultH3Tag").textContent = "Sum: " + sum;
+        }
+
+
+    </script>
+       <style>
+        button {
+      background-color: #0404aa;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+       </style>
+</head>
+<body>
+    <h1 style="border-width:5px; border-style:solid;"> Two Number Input Click to Result alert,Textbox,h3 tag></h1>
+    <center>
+        
+    <label for="text1">No 1:</label>
+    <input type="text" id="text1"><br><br>
+
+    <label for="text2">No 2:</label>
+    <input type="text" id="text2"><br><br>
+
+    <button id="btnSum" onclick="showSum()">Sum</button><br><br>
+
+    <label for="resultTextBox">Result</label>
+    <input type="text" id="resultTextBox" readonly><br><br>
+
+    <h3 id="resultH3Tag" style="color: red;"></h3>
+
+</center>
+
+
+</body>
+</html>

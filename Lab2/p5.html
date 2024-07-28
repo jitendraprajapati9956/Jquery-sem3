@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <title>Input Validation and Arithmetic Operations</title>
+    <style>
+        .error {
+            border-color: red;
+            background-color: yellow;
+        }
+        button {
+      background-color: #0404aa;
+      border: none;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    </style>
+    <script src="jquery\jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+              $('#textbox1, #textbox2').blur(function() {
+                let value = $(this).val();
+                if ($.isNumeric(value) && value < 0) {
+                    $(this).addClass('error');
+                } else {
+                    $(this).removeClass('error');
+                }
+            });
+
+             function performOperation(operator) {
+                let val1 = parseFloat($('#textbox1').val());
+                let val2 = parseFloat($('#textbox2').val());
+                let result;
+
+                if (isNaN(val1) || isNaN(val2)) {
+                    $('#result').text('Please enter valid numbers.');
+                    return;
+                }
+
+                switch (operator) {
+                    case '+':
+                        result = val1 + val2;
+                        
+                        break;
+                    case '-':
+                        result = val1 - val2;
+                        break;
+                    case '*':
+                        result = val1 * val2;
+                        break;
+                    case '/':
+                        if (val2 === 0) {
+                            $('#result').text('Cannot divide by zero.');
+                            return;
+                        }
+                        result = val1 / val2;
+                        break;
+                }
+                $('#result').text('Answer: ' + result);
+            }
+
+            $('#addButton').click(function() {
+                performOperation('+');
+              
+            });
+
+            $('#subtractButton').click(function() {
+                performOperation('-');
+            });
+
+            $('#multiplyButton').click(function() {
+                performOperation('*');
+            });
+
+            $('#divideButton').click(function() {
+                performOperation('/');
+            });
+
+             function toggleButtons() {
+                let val1 = $('#textbox1').val();
+                let val2 = $('#textbox2').val();
+                if (val1 === '' || val2 === '') {
+                    $('#addButton, #subtractButton, #multiplyButton, #divideButton').attr('disabled', true);
+                } else {
+                    $('#addButton, #subtractButton, #multiplyButton, #divideButton').attr('disabled', false);
+                }
+            }
+
+            $('#textbox1, #textbox2').on('input', toggleButtons);
+
+             toggleButtons();
+        });
+    </script>
+</head>
+<body>
+    <h4>Create one style class with name error:</h4>
+    <h4>border color : red,background color : yellow,Apply this class to a text box when the focus is moved out of it and if
+        entered data is a negative number.</h4>
+        <h4> The buttons in above code 5-b should remain in disable state until any one or
+            both of the textboxes are vacant.</h4>
+        <h2>Two textboxes and one button with + on it. On click of the + button,
+            display sum of the numbers entered in two textboxes.Same
+            functionality for subtract, multiply and divide buttons.</h2>
+    <h3>Task a:</h3>
+    
+    <input type="text" id="textbox1">
+    <input type="text" id="textbox2">
+
+    <h3>Task b and c:</h3>
+    <button id="addButton" disabled>+</button>
+    <button id="subtractButton" disabled>-</button>
+    <button id="multiplyButton" disabled>*</button>
+    <button id="divideButton" disabled>/</button>
+    <p id="result"></p>
+</body>
+</html>

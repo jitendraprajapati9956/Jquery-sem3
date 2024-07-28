@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery get() Example</title>
+  <script src="jquery/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+  <button id="loadData">Load Data</button>
+  <div id="result"></div>
+
+  <script>
+         var request = new XMLHttpRequest();
+     request.open("GET","demo-cgi");
+     request.send();
+     
+    $(document).ready(function() {
+      $("#loadData").click(function() {
+        $.get("data.json", function(data) {
+          $("#result").html(data);
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

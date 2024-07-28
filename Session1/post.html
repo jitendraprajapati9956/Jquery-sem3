@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery post() Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+  <button id="sendData">Send Data</button>
+  <div id="result"></div>
+
+  <script>
+    $(document).ready(function() {
+      $("#sendData").click(function() {
+        $.post("submit.php", { name: "John", age: 30 }, function(response) {
+          $("#result").html(response);
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

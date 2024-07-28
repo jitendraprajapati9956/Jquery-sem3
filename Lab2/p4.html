@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <title>Text Area and Text Count</title>
+    <script src="jquery\jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#showTextCount').click(function() {
+                let textCount = $('#ta1').val().length;
+                $('#textCountDisplay').text('Text count: ' + textCount);
+            });
+
+            // Task b: Update text count as and when text is entered in ta2
+            $('#ta2').on('input', function() {
+                let textCount = $(this).val().length;
+                $('#liveTextCountDisplay').text('Live text count: ' + textCount);
+
+                // Task c: Restrict max. number of characters to 10 in ta2
+                if (textCount > 10) {
+                    $(this).val($(this).val().substring(0, 10));
+                    $('#liveTextCountDisplay').text('Live text count: 10');
+                }
+            });
+        });
+    </script>
+
+    <style>
+           button {
+      background-color: #0404aa;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+    <h1>Display count of text available in ta1 on button click On click of the button, display count of text available in ta1 on document</h1>
+    <h3>Task a:</h3>
+    <textarea id="ta1" rows="4" cols="50"></textarea>
+    <br>
+    <button id="showTextCount">Show Text Count</button>
+    <p id="textCountDisplay"></p>
+
+    <h1>Create one textarea (id: ta2).
+        Update text count as and when text is entered. Display the same on document.</h1>
+   <h2>Restrict the max. number of characters to 10 in ta2. </h2>
+        <h3>Task b and c:</h3>
+    <textarea id="ta2" rows="4" cols="50"></textarea>
+    <p id="liveTextCountDisplay">Live text count: 0</p>
+</body>
+</html>

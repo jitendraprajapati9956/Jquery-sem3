@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <title> Title: Program 3 </title>
+</head>
+<body>
+
+    <h1 style="border-width:5px; border-style:solid;">Display Title and URL using JavaScript</h1>
+    <h1 id="title"></h1>
+
+    <h3>URL </h3>
+   
+    <p id="url"></p>
+
+    <script>
+        // Display document title
+        document.getElementById("title").textContent = document.title;
+
+     
+        // Display document URL
+        document.getElementById("url").textContent = "URL: " + window.location.href;
+    </script>
+</body>
+</html>

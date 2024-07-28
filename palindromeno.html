@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Palindrome Number Checker</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function isPalindrome(num) {
+                const str = num.toString();
+                const reversedStr = str.split('').reverse().join('');
+                return str === reversedStr;
+            }
+
+            function isValidNumber(value) {
+                return /^-?\d+$/.test(value);
+            }
+
+            $('#checkPalindrome').click(function() {
+                const inputVal = $('#numberInput').val().trim();
+                if (!isValidNumber(inputVal)) {
+                    $('#result').text('Please enter a valid number.');
+                    return;
+                }
+
+                const num = parseInt(inputVal, 10);
+                if (isPalindrome(num)) {
+                    $('#result').text(`${num} is a palindrome number.`);
+                } else {
+                    $('#result').text(`${num} is not a palindrome number.`);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Palindrome Number Checker</h1>
+    <input type="text" id="numberInput" placeholder="Enter a number">
+    <button id="checkPalindrome">Check Palindrome</button>
+    <p id="result"></p>
+</body>
+</html>

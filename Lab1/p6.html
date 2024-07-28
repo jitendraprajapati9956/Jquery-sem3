@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>background-color change in radio button</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        .container {
+            margin: 0 10;
+            width: 300px;
+            text-align: center;
+            padding: 35px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        button {
+      background-color: #0404aa;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    </style>
+    <script>
+        function changeBackground(color) {
+            document.body.style.backgroundColor = color;
+        }
+
+        function checkAge() {
+            var age = parseInt(document.getElementById("age").value);
+
+            if (isNaN(age)) {
+                alert("Please enter a valid age.");
+                return;
+            }
+
+            if (age < 18) {
+                alert("Kid");
+            } else if (age >= 18 && age < 60) {
+                alert("Adult");
+            } else if (age >= 60) {
+                alert("Sr. Citizen");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1 style="border-width:5px; border-style:solid;"> Background-Color Change in Radio button</h1>
+    <center>
+   
+    <div class="container">
+        <label for="name">Name:</label>
+        <input type="text" id="name"><br><br>
+
+        <label for="age">Age:</label>
+        <input type="text" id="age"><br><br>
+
+        <label>Gender:</label><br>
+        <input type="radio" id="male" name="gender" value="male" onclick="changeBackground('green')">
+        <label for="male">Male</label><br>
+        
+        <input type="radio" id="female" name="gender" value="female" onclick="changeBackground('blue')">
+        <label for="female">Female</label><br>
+        
+        <input type="radio" id="other" name="gender" value="other" onclick="changeBackground('yellow')">
+        <label for="other">Other</label><br><br>
+
+        <button onclick="checkAge()">Check Age</button>
+    </div>
+    </center>
+</body>
+</html>

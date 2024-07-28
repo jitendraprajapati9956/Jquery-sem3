@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Palindrome Checker</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function isPalindrome(str) {
+                const cleanedStr = str.toLowerCase().replace(/[^a-z0-9]/gi, '');
+                const reversedStr = cleanedStr.split('').reverse().join('');
+                return cleanedStr === reversedStr;
+            }
+
+            $('#checkPalindrome').click(function() {
+                const inputVal = $('#stringInput').val().trim();
+                if (inputVal === '') {
+                    $('#result').text('Please enter a string.');
+                    return;
+                }
+
+                if (isPalindrome(inputVal)) {
+                    $('#result').text(`'${inputVal}' is a palindrome.`);
+                } else {
+                    $('#result').text(`'${inputVal}' is not a palindrome.`);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Palindrome Checker</h1>
+    <input type="text" id="stringInput" placeholder="Enter a string">
+    <button id="checkPalindrome">Check Palindrome</button>
+    <p id="result"></p>
+</body>
+</html>

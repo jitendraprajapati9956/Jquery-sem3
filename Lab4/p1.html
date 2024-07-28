@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program 1</title>
+    <style>
+        .div1 {
+            width: 50px;
+            height: 50px;
+            background-color: rgb(255, 171, 15);
+        }
+        .div2 {
+            width: 50px;
+            height: 50px;
+            background-color: whitesmoke;
+        }
+        .div3 {
+            width: 50px;
+            height: 50px;
+              background-color: green;
+        }
+        button {
+      background-color: #0404aa;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+     
+    </style>
+    <script src="jquery/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <h1>create three HTML div elements of different sizes, modify size of all div elements</h1>
+    <div class="div1"></div>
+    <div class="div2"></div>
+    <div class="div3"></div>
+    <br>
+
+    <button id="modifyDiv">Modify Div Sizes</button>
+  
+     <hr>
+
+     <h1>create an HTML div element 
+        with user specified height and width – when the button is clicked</h1>
+    <input type="text" id="height" placeholder="Height"><br><br>
+    <input type="text" id="width" placeholder="Width"><br><br>
+    <button id="createDiv">Create Div</button><br><br>
+    <hr>
+     <h1>delete all div elements, hide all div elements div</h1>
+    <button id="deleteHideDiv">Delete and Hide Divs</button>
+    <script>
+        $(document).ready(function() {
+            $('.div1').css({
+                width: '70px',
+                height: '70px'
+            });
+            $('.div2').css({
+                width: '140px',
+                height: '140px'
+            });
+            $('.div3').css({
+                width: '210px',
+                height: '210px'
+            });
+
+
+            $('#createDiv').click(function() {
+                var height = $('#height').val();
+                var width = $('#width').val();
+                $('<div></div>').css({
+                    height: height + 'px',
+                    width: width + 'px',
+                    backgroundColor: 'blue',
+                    margin: '10px'
+                }).appendTo('body');
+            });
+
+             $('#modifyDiv').click(function() {
+                $('.div1').css({
+                    width: '70px',
+                    height: '70px'
+                });
+                $('.div2').css({
+                    width: '70px',
+                    height: '70px'
+                });
+                $('.div3').css({
+                    width: '70px',
+                    height: '70px'
+                });
+            });
+
+            $('#deleteHideDiv').click(function() {
+                $('.div1, .div2, .div3').remove();
+                $('.userDiv').hide();
+            });
+
+        });
+    </script>
+</body>
+</html>

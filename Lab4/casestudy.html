@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic HTML Table</title>
+    <style>
+        .green-bg {
+            background-color: green;
+        }
+        .bold-text {
+            font-weight: bold;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function validateGender(gender) {
+                return ['F', 'M', 'O'].includes(gender);
+            }
+
+            function validateAge(age) {
+                return age > 0;
+            }
+
+            function updateRowStyles() {
+                $('#dynamicTable tbody tr').each(function() {
+                    const gender = $(this).find('.gender').val().toUpperCase();
+                    const age = parseInt($(this).find('.age').val(), 10);
+
+                    $(this).removeClass('green-bg');
+                    $(this).find('.age').removeClass('bold-text');
+
+                    if (validateGender(gender) && gender === 'F') {
+                        $(this).addClass('green-bg');
+                    }
+                    if (validateAge(age) && age < 18) {
+                        $(this).find('.age').addClass('bold-text');
+                    }
+                });
+            }
+
+            function addRow() {
+                const newRow = `
+                    <tr>
+                        <td><input type="text" class="rollNo"></td>
+                        <td><input type="text" class="name"></td>
+                        <td><input type="text" class="gender"></td>
+                        <td><input type="number" class="age"></td>
+                    </tr>`;
+                $('#dynamicTable tbody').append(newRow);
+                updateRowStyles();
+            }
+
+            function deleteRow(row) {
+                if ($('#dynamicTable tbody tr').length > 1) {
+                    row.remove();
+                }
+                updateRowStyles();
+            }
+
+            $('#insertRow').click(function() {
+                addRow();
+            });
+
+            $('#deleteRow').click(function() {
+                const selectedRow = $('#dynamicTable tbody tr').has('input:focus');
+                if (selectedRow.length) {
+                    deleteRow(selectedRow);
+                }
+            });
+
+            $('#dynamicTable').on('input', '.gender, .age', function() {
+                updateRowStyles();
+            });
+
+            // Initialize table with two rows
+            addRow();
+            addRow();
+        });
+    </script>
+</head>
+<body>
+    <table id="dynamicTable" border="1">
+        <thead>
+            <tr>
+                <th>RollNo.</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Initial rows will be added by JavaScript -->
+        </tbody>
+    </table>
+    <br>
+    <button id="insertRow">Insert Row</button>
+    <button id="deleteRow">Delete Current Row</button>
+</body>
+</html>

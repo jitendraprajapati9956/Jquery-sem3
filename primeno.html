@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prime Number Checker</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function isPrime(num) {
+                if (num <= 1) return false;
+                if (num <= 3) return true;
+                
+                if (num % 2 === 0 || num % 3 === 0) return false;
+
+                for (let i = 5; i * i <= num; i += 6) {
+                    if (num % i === 0 || num % (i + 2) === 0) return false;
+                }
+                return true;
+            }
+
+            function isValidNumber(value) {
+                return /^-?\d+$/.test(value);
+            }
+
+            $('#checkPrime').click(function() {
+                const inputVal = $('#numberInput').val().trim();
+                if (!isValidNumber(inputVal)) {
+                    $('#result').text('Please enter a valid number.');
+                    return;
+                }
+
+                const num = parseInt(inputVal, 10);
+                if (isPrime(num)) {
+                    $('#result').text(`${num} is a prime number.`);
+                } else {
+                    $('#result').text(`${num} is not a prime number.`);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Prime Number Checker</h1>
+    <input type="text" id="numberInput" placeholder="Enter a number">
+    <button id="checkPrime">Check Prime</button>
+    <p id="result"></p>
+</body>
+</html>

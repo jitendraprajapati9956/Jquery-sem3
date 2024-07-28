@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load Marks</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <!-- Include jQuery from a CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Link to the JavaScript file where AJAX will be handled -->
+    <script src="p6.js"></script>
+</head>
+<body>
+    <button id="loadMarks">Load Marks</button>
+    <div id="marksContainer">
+        <table>
+            <thead>
+                <tr>
+                    <th>Sr. No.</th>
+                    <th>Name</th>
+                    <th>Marks</th>
+                </tr>
+            </thead>
+            <tbody id="marksTableBody">
+           </tbody>
+        </table>
+    </div>
+</body>
+</html>

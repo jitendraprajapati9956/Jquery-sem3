@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Size and Position</title>
+    <style>
+        #element { 
+            width: 200px; 
+            height: 150px; 
+            margin-top: 50px; 
+            margin-left: 100px; 
+            background-color: yellow; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Print various types of sizes and  position of one element.</h1>
+    <div id="element">Element</div>
+
+    <script src="jquery\jquery-3.7.1.min.js"></script>
+   <script>
+        $(document).ready(function(){
+            var $element = $('#element');
+            
+            // Print various sizes
+            var width = $element.width();
+            var height = $element.height();
+            var outerWidth = $element.outerWidth();
+            var outerHeight = $element.outerHeight();
+           // var outerWidthWithMargin = $element.outerWidth(true);
+            //var outerHeightWithMargin = $element.outerHeight(true);
+            
+            console.log('Width: ' + width);
+            console.log('Height: ' + height);
+            console.log('Outer Width: ' + outerWidth);
+            console.log('Outer Height: ' + outerHeight);
+            //console.log('Outer Width (including margin): ' + outerWidthWithMargin);
+            //console.log('Outer Height (including margin): ' + outerHeightWithMargin);
+
+            // Print position
+            var position = $element.position();
+            //var offset = $element.offset();
+            
+            console.log('Position - Top: ' + position.top + ', Left: ' + position.left);
+            console.log('Offset - Top: ' + offset.top + ', Left: ' + offset.left);
+        });
+    </script>
+</body>
+</html>

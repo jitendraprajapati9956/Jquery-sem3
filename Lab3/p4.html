@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Manipulations</title>
+    <style>
+        #div1 { background-color: blue; width: 200px; height: 200px; padding: 10px; }
+        #div11 { background-color: red; width: 100px; height: 50px; margin: 5px; }
+        #div12 { background-color: green; width: 100px; height: 50px; margin: 5px; }
+        #div13 { background-color: blue; width: 100px; height: 50px; margin: 5px; }
+        table, th, td { border: 1px solid black; }
+        .hidden { display: none; }
+     
+        button {
+      background-color: #0404aa;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+    <h1>Create a div div1 with blue background color</h1>
+    <h3> Inside div1, create 3 more div div11, div12 and div13 with red, green and
+        blue colors</h3>
+        <h3>Using jQuery, apply roll-over effect using functions such as .animate and
+            .opacity.</h3>
+            <h3> Inside div13, create a table t1 with 3 columns and 4 rows</h3>
+          
+            <div id="div1">
+        
+        <div id="div11"></div>
+          <div id="div12"></div>
+          <center>
+          <div id="div13">
+          
+              <table id="t1">
+           
+                <tr>
+                    <td>Row 1, Col 1</td>
+                    <td>Row 1, Col 2</td>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    <td>Row 1, Col 3</td>
+                </tr>
+                <tr>
+                    <td>Row 2, Col 1</td>
+                    <td>Row 2, Col 2</td>
+                    <td>Row 2, Col 3</td>
+                </tr>
+                <tr>
+                    <td>Row 3, Col 1</td>
+                    <td>Row 3, Col 2</td>
+                    <td>Row 3, Col 3</td>
+                </tr>
+                <tr>
+                    <td>Row 4, Col 1</td>
+                    <td>Row 4, Col 2</td>
+                    <td>Row 4, Col 3</td>
+                </tr>
+            </table>
+        
+        </div>
+    </center>
+    </div>
+   <br><br><br><br>
+   
+   <center>
+   <h3>Enlarge div1 when clicked some button</h3>
+    <button id="enlargeDiv1Btn">Enlarge Div1</button><br>
+    
+   <h3> Hide/Show div12 using some toggle button.</h3>
+     <button id="toggleDiv12Btn">Toggle Div12</button><br>
+
+     <h3>Show/hide table when clicked some button</h3>
+    <button id="toggleTableBtn">Show/Hide Table</button>
+   
+    <h3>Change border-width and border-style when clicked some button</h3>
+    <button id="changeBorderBtn">Change Border</button><br>
+   
+     <h3>Change font-color as per the color name given in a text box, when clicked some
+        button.</h3>
+
+        <input type="text" id="fontColorInput" placeholder="Enter font color">
+        <br> <br>
+    
+        <button id="changeFontColorBtn">Change Font Color</button>
+    
+        <h3>Change font-size as per the font size given in a text box, when clicked some
+            button.</h3>
+        <input type="text" id="fontSizeInput" placeholder="Enter font size (e.g., 20px)">
+         <br>   <br>
+    <button id="changeFontSizeBtn">Change Font Size</button><br><br>
+   
+   <h3>Delete div12 when clicked some button</h3>
+    <button id="deleteDiv12Btn">Delete Div12</button>
+  </center>
+   
+    <script src="jquery\jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Enlarge div1 when clicked some button
+            $('#enlargeDiv1Btn').click(function(){
+                $('#div1').animate({width: '+=50px', height: '+=50px'}, 'slow');
+            });
+
+            // Hide/Show div12 using some toggle button
+            $('#toggleDiv12Btn').click(function(){
+                $('#div12').toggle();
+            });
+
+            // Apply roll-over effect using functions such as .animate and .opacity
+            $('#div1').hover(
+                function(){
+                    $(this).animate({opacity: 0.5}, 'slow');
+                }, 
+                function(){
+                    $(this).animate({opacity: 1.0}, 'slow');
+                }
+            );
+
+            // Change border-width and border-style when clicked some button
+            $('#changeBorderBtn').click(function(){
+                $('#div1').css({'border-width': '5px', 'border-style': 'dashed'});
+            });
+
+            // Show/hide table when clicked some button
+            $('#toggleTableBtn').click(function(){
+                $('#t1').toggle();
+            });
+
+            // Change font-color as per the color name given in a text box, when clicked some button
+            $('#changeFontColorBtn').click(function(){
+                var color = $('#fontColorInput').val();
+                $('#t1').css('color', color);
+            });
+
+            // Change font-size as per the font size given in a text box, when clicked some button
+            $('#changeFontSizeBtn').click(function(){
+                var fontSize = $('#fontSizeInput').val();
+                $('#t1').css('font-size', fontSize);
+            });
+
+            // Delete div12 when clicked some button
+            $('#deleteDiv12Btn').click(function(){
+                $('#div12').remove();
+            });
+        });
+    </script>
+</body>
+</html>

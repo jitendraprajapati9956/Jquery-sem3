@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>XMLHttpRequest Example</title>
+</head>
+<body>
+
+  <button id="loadData">Load Data</button>
+  <div id="result"></div>
+
+  <script>
+    document.getElementById("loadData").addEventListener("click", function() {
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "data.json", true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          document.getElementById("result").innerHTML = xhr.responseText;
+        }
+      };
+      xhr.send();
+    });
+  </script>
+
+</body>
+</html>

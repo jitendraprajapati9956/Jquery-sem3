@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load Marks</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <script src="p6.js"></script>
+</head>
+<body>
+    <button id="btnMarks">Show Marks</button>
+    <div id="marks"></div>
+    <script>
+    $(document).ready(function() {
+        $('#btnMarks').click(function() {
+            $.ajax({
+                url: 'marks.json',  // The URL of the JSON file
+                type: 'GET',        // The HTTP method
+                dataType: 'json',   // The type of data expected from the server
+                success: function(data) {
+                    // Clear the container
+                    $('#marks').empty();
+    
+                    // Loop through the JSON data and display it
+                    data.students.forEach(function(student) {
+                        $('#marks').append(
+                            `<p>Name: ${student.name}, Marks: ${student.marks}</p>`
+                        );
+                    });
+                },
+              
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

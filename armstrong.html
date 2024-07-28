@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Armstrong Number Checker</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function isArmstrongNumber(num) {
+                const numStr = num.toString();
+                const numDigits = numStr.length;
+                const sumOfPowers = numStr.split('').reduce((sum, digit) => sum + Math.pow(parseInt(digit, 10), numDigits), 0);
+                return sumOfPowers === num;
+            }
+
+            $('#checkArmstrong').click(function() {
+                const inputVal = $('#numberInput').val().trim();
+                const num = parseInt(inputVal, 10);
+
+                if (!/^\d+$/.test(inputVal)) {
+                    $('#result').text('Please enter a valid non-negative integer.');
+                    return;
+                }
+
+                if (isArmstrongNumber(num)) {
+                    $('#result').text(`${num} is an Armstrong number.`);
+                } else {
+                    $('#result').text(`${num} is not an Armstrong number.`);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Armstrong Number Checker</h1>
+    <input type="text" id="numberInput" placeholder="Enter a number">
+    <button id="checkArmstrong">Check Armstrong</button>
+    <p id="result"></p>
+</body>
+</html>

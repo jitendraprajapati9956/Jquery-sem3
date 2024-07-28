@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery/jquery-3.7.1.min.js"></script>
+    <style>
+        .highlight {
+            color: red;
+            font-weight: bold;
+        }
+        #scrollTarget {
+            margin-top: 1000px;
+        }
+    </style>
+   
+
+</head>
+<body style="height: 2000px;" onload="handleLoad()" onunload="handleUnload()">
+ 
+<h1>Accessing DOM</h1>
+<p id="attributenode">Attribute Node</p>
+<p id="nodeName">Node Name</p>
+
+<h1>Core Interface Of DOM</h1>
+<div id="querySelectorExample">Query Selector Example</div>
+<div class="querySelectorAllExample">Query Selector All Example 1</div>
+<div class="querySelectorAllExample">Query Selector All Example 2</div>
+<div id="createElementExample"></div>
+<div id="innerHTMLExample">Old Content</div>
+<div id="setAttributeExample">Set Attribute Example</div>
+<div id="getAttributeExample" data-info="Sample Data">Get Attribute Example</div>
+<button id="eventListenerExample">Click Me</button>
+<div id="styleExample">Style Example</div>
+<div id="appendChildExample">Parent Element</div>
+<button id="scrollButton">Scroll to Target</button>
+<div id="scrollTarget">Scroll Target</div>
+
+
+<h1>Intrinsic event handling</h1>
+<section>
+    <h2>Click Events</h2>
+    <button onclick="handleClick()">Click Me</button>
+    <button ondblclick="handleDoubleClick()">Double Click Me</button>
+</section>
+
+<section>
+    <h2>Mouse Events</h2>
+    <button onmousedown="handleMouseDown()">Mouse Down</button>
+    <button onmouseup="handleMouseUp()">Mouse Up</button>
+    <button onmouseover="handleMouseOver(this)" onmouseout="handleMouseOut(this)">Mouse Over/Out</button>
+    <button onmousemove="handleMouseMove(event)">Mouse Move</button>
+</section>
+
+<section>
+    <h2>Focus and Blur Events</h2>
+    <input type="text" onfocus="handleFocus(this)" onblur="handleBlur(this)" placeholder="Focus on me">
+</section>
+
+<section>
+    <h2>Keyboard Events</h2>
+    <input type="text" onkeypress="handleKeyPress(event)" onkeydown="handleKeyDown(event)" onkeyup="handleKeyUp(event)" placeholder="Type something">
+</section>
+
+<section>
+    <h2>Form Events</h2>
+    <form onsubmit="return handleSubmit(event)" onreset="handleReset()">
+        <input type="text" name="exampleInput" onchange="handleChange(this)" placeholder="Change me">
+        <input type="text" name="selectInput" onselect="handleSelect()" placeholder="Select me">
+        <br>
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+    </form>
+</section>
+
+
+<h1>Document Tree: Node Properties</h1>
+
+    <div id="exampleNode">
+        <p>This is a paragraph.</p>
+        <span>This is a span.</span>
+    </div>
+
+    <ul id="exampleList">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+
+    <button onclick="showNodeProperties()">Show Node Properties</button>
+
+    <div id="output"></div>
+
+
+    <h1>Document Tree: Node Methods</h1>
+
+    <div id="exampleNode2" class="example">
+        <p id="firstParagraph">This is the first paragraph.</p>
+    </div>
+
+    <button onclick="testNodeMethods()">Test Node Methods</button>
+
+    <div id="output"></div>
+
+<script>
+        
+    //Accesing DOM
+         window.onload = () => {
+            const head = document.createELement("h1");
+            const headtext = document.createTextNode("Big Head!");
+    
+            head.appendChild(headtext);
+            document.body.appendChild(head);
+         }
+    //Attribute Node
+           var paragraph =document.getElementById("attributenode");
+       
+    //Node Name
+          var target = document.getElementById("attributenode");
+          alert(target.nodeName);
+       
+    //Core Interface Of DOM
+          // document.querySelector()
+          const querySelectorElement = document.querySelector('#querySelectorExample');
+            console.log(querySelectorElement.innerHTML);  // Output: Query Selector Example
+    
+            // document.querySelectorAll()
+            const querySelectorAllElements = document.querySelectorAll('.querySelectorAllExample');
+            querySelectorAllElements.forEach(element => console.log(element.innerHTML));  // Output: Query Selector All Example 1, Query Selector All Example 2
+    
+            // document.createElement()
+            const newDiv = document.createElement('div');
+            newDiv.innerHTML = 'Created Element';
+            document.getElementById('createElementExample').appendChild(newDiv);
+    
+            // Element.innerHTML
+            const innerHTMLElement = document.getElementById('innerHTMLExample');
+            innerHTMLElement.innerHTML = 'New Content';
+    
+            // Element.setAttribute()
+            const setAttributeElement = document.getElementById('setAttributeExample');
+            setAttributeElement.setAttribute('class', 'highlight');
+    
+            // Element.getAttribute()
+            const getAttributeElement = document.getElementById('getAttributeExample');
+            const attributeValue = getAttributeElement.getAttribute('data-info');
+            console.log(attributeValue);  // Output: Sample Data
+    
+            // EventTarget.addEventListener()
+            const eventListenerButton = document.getElementById('eventListenerExample');
+            eventListenerButton.addEventListener('click', () => {
+                alert('Button was clicked!');
+            });
+    
+            // HTMLElement.style
+            const styleElement = document.getElementById('styleExample');
+            styleElement.style.color = 'blue';
+            styleElement.style.fontSize = '20px';
+    
+            // Node.appendChild()
+            const appendChildParent = document.getElementById('appendChildExample');
+            const appendChildElement = document.createElement('div');
+            appendChildElement.innerHTML = 'Child Element';
+            appendChildParent.appendChild(appendChildElement);
+    
+            // window.onload
+            window.onload = () => {
+                console.log('Page is fully loaded');
+            };
+    
+            // window.scrollTo()
+            const scrollButton = document.getElementById('scrollButton');
+            scrollButton.addEventListener('click', () => {
+                window.scrollTo(0, document.getElementById('scrollTarget').offsetTop);
+            });
+            
+//Intrinsic event handling
+function handleLoad() {
+            console.log("Page loaded");
+        }
+
+        function handleUnload() {
+            console.log("Page unloaded");
+        }
+
+        function handleClick() {
+            alert("Button clicked");
+        }
+
+        function handleDoubleClick() {
+            alert("Button double-clicked");
+        }
+
+        function handleMouseDown() {
+            alert("Mouse button down");
+        }
+
+        function handleMouseUp() {
+            alert("Mouse button up");
+        }
+
+        function handleMouseOver(element) {
+            element.classList.add('highlight');
+            console.log("Mouse over");
+        }
+
+        function handleMouseOut(element) {
+            element.classList.remove('highlight');
+            console.log("Mouse out");
+        }
+
+        function handleMouseMove(event) {
+            console.log(`Mouse move at: (${event.clientX}, ${event.clientY})`);
+        }
+
+        function handleFocus(element) {
+            element.classList.add('highlight');
+            console.log("Element focused");
+        }
+
+        function handleBlur(element) {
+            element.classList.remove('highlight');
+            console.log("Element blurred");
+        }
+
+        function handleKeyPress(event) {
+            console.log(`Key press: ${event.key}`);
+        }
+
+        function handleKeyDown(event) {
+            console.log(`Key down: ${event.key}`);
+        }
+
+        function handleKeyUp(event) {
+            console.log(`Key up: ${event.key}`);
+        }
+
+        function handleSubmit(event) {
+            alert("Form submitted");
+            event.preventDefault(); // Prevent actual form submission for demo purposes
+            return false;
+        }
+
+        function handleReset() {
+            alert("Form reset");
+        }
+
+        function handleChange(element) {
+            console.log(`Input changed to: ${element.value}`);
+        }
+
+        function handleSelect() {
+            console.log("Text selected");
+        }
+
+//Document tree: Node
+
+function showNodeProperties() {
+            const exampleNode = document.getElementById('exampleNode');
+            const paragraph = exampleNode.firstElementChild;
+            const span = paragraph.nextElementSibling;
+
+            const output = document.getElementById('output');
+            output.innerHTML = '';
+
+            // nodeType
+            output.innerHTML += `<p><strong>Node Type of exampleNode:</strong> ${exampleNode.nodeType}</p>`;
+
+            // nodeName
+            output.innerHTML += `<p><strong>Node Name of exampleNode:</strong> ${exampleNode.nodeName}</p>`;
+
+            // parentNode
+            output.innerHTML += `<p><strong>Parent Node of paragraph:</strong> ${paragraph.parentNode.nodeName}</p>`;
+
+            // childNodes
+            output.innerHTML += `<p><strong>Child Nodes of exampleNode:</strong></p>`;
+            const childNodes = exampleNode.childNodes;
+            childNodes.forEach(node => {
+                output.innerHTML += `<p>${node.nodeName} (NodeType: ${node.nodeType})</p>`;
+            });
+
+            // previousSibling
+            output.innerHTML += `<p><strong>Previous Sibling of span:</strong> ${span.previousSibling.nodeName} (NodeType: ${span.previousSibling.nodeType})</p>`;
+
+            // nextSibling
+            output.innerHTML += `<p><strong>Next Sibling of paragraph:</strong> ${paragraph.nextSibling.nodeName} (NodeType: ${paragraph.nextSibling.nodeType})</p>`;
+
+            // attributes
+            output.innerHTML += `<p><strong>Attributes of exampleNode:</strong></p>`;
+            const attributes = exampleNode.attributes;
+            for (let i = 0; i < attributes.length; i++) {
+                const attr = attributes[i];
+                output.innerHTML += `<p>${attr.name} = "${attr.value}"</p>`;
+            }
+        }
+
+
+        function testNodeMethods() {
+            const exampleNode = document.getElementById('exampleNode2');
+            const firstParagraph = document.getElementById('firstParagraph');
+            const output = document.getElementById('output');
+            output.innerHTML = '';
+
+            // hasAttribute
+            const hasClassAttr = exampleNode.hasAttribute('class');
+            output.innerHTML += `<p>exampleNode has 'class' attribute: ${hasClassAttr}</p>`;
+
+            // hasChildNodes
+            const hasChildren = exampleNode.hasChildNodes();
+            output.innerHTML += `<p>exampleNode has child nodes: ${hasChildren}</p>`;
+
+            // appendChild(Node)
+            const newParagraph = document.createElement('p');
+            newParagraph.textContent = 'This is a new paragraph appended.';
+            exampleNode.appendChild(newParagraph);
+            output.innerHTML += `<p>Appended new paragraph.</p>`;
+
+            // insertBefore(Node, Node)
+            const newSpan = document.createElement('span');
+            newSpan.textContent = 'Inserted span before the first paragraph.';
+            exampleNode.insertBefore(newSpan, firstParagraph);
+            output.innerHTML += `<p>Inserted new span before the first paragraph.</p>`;
+
+            // removeChild(Node)
+            exampleNode.removeChild(newParagraph);
+            output.innerHTML += `<p>Removed the appended paragraph.</p>`;
+
+            // replaceChild(Node, Node)
+            const newHeading = document.createElement('h2');
+            newHeading.textContent = 'This is a new heading replacing the first paragraph.';
+            exampleNode.replaceChild(newHeading, firstParagraph);
+            output.innerHTML += `<p>Replaced the first paragraph with a new heading.</p>`;
+        }
+        
+       </script>
+</body>
+</html>

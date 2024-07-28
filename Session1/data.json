@@ -1,0 +1,16 @@
+{
+    "students": [
+        {
+            "name": "Naran",
+            "marks": 90
+        },
+        {
+            "name": "Rajesh",
+            "marks": 92
+        },
+        {
+            "name": "Jitendra",
+            "marks": 78
+        }
+    ]
+}

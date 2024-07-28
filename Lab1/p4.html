@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <title>Show Title Button Click</title>
+    <script>
+        function showTitle() {
+            var title = document.title;
+            alert("Title: " + title);
+        }
+    </script>
+
+
+   <style>
+    button {
+  background-color: #0404aa;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+   </style>
+</head>
+<body>
+    <h1 style="border-width:5px; border-style:solid;"> Button Click to Alert Title</h1>
+ <center>
+    <button id="btnShowTitle" onclick="showTitle()">Show title</button>
+</center>
+</body>
+</html>

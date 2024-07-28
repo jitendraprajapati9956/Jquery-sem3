@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Address</title>
+    <script src="jquery/jquery-3.7.1.min.js"></script>
+    <style>
+        #address {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+        #error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Address</h1>
+    <button id="showAddress">Show Address</button>
+    <div id="address"></div>
+    <div id="error"></div>
+
+    <script>
+        var client = new XMLHttpRequest();
+     client.open('GET', 'demo.cgi');
+    client.send();
+
+
+        $(document).ready(function() {
+            $('#showAddress').click(function() {
+                // Clear previous results
+                $('#address').text('');
+                $('#error').text('');
+
+                // AJAX request to fetch address
+                $.ajax({
+                    url: 'address.txt',
+                    method: 'GET',
+                    dataType: 'text',
+                    success: function(data) {
+                        $('#address').text(data);
+                    },
+                    error: function() {
+                        $('#error').text('Error fetching address. Please try again.');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Print Natural Numbers</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function printNaturalNumbers(limit) {
+                if (limit < 1) return 'Limit should be a positive integer.';
+                
+                let numbers = [];
+                for (let i = 1; i <= limit; i++) {
+                    numbers.push(i);
+                }
+                return numbers.join(', ');
+            }
+
+            $('#printNumbers').click(function() {
+                const inputVal = $('#numberInput').val().trim();
+                const limit = parseInt(inputVal, 10);
+
+                if (!/^\d+$/.test(inputVal) || limit < 1) {
+                    $('#result').text('Please enter a valid positive integer.');
+                    return;
+                }
+
+                const numbers = printNaturalNumbers(limit);
+                $('#result').text(`Natural numbers up to ${limit}: ${numbers}`);
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Print Natural Numbers</h1>
+    <input type="text" id="numberInput" placeholder="Enter a positive integer">
+    <button id="printNumbers">Print Numbers</button>
+    <p id="result"></p>
+</body>
+</html>

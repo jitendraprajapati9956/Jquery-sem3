@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sum of Digits</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function sumOfDigits(num) {
+                const digits = num.toString().split('');
+                let sum = 0;
+                for (let digit of digits) {
+                    if (!isNaN(digit) && digit !== ' ') {
+                        sum += parseInt(digit, 10);
+                    }
+                }
+                return sum;
+            }
+
+            $('#calculateSum').click(function() {
+                const inputVal = $('#numberInput').val().trim();
+                if (/^-?\d+$/.test(inputVal)) {
+                    const num = parseInt(inputVal, 10);
+                    const sum = sumOfDigits(Math.abs(num)); // Handle negative numbers by taking absolute value
+                    $('#result').text(`Sum of digits: ${sum}`);
+                } else {
+                    $('#result').text('Please enter a valid integer.');
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Sum of Digits</h1>
+    <input type="text" id="numberInput" placeholder="Enter a number">
+    <button id="calculateSum">Calculate Sum</button>
+    <p id="result"></p>
+</body>
+</html>

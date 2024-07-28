@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery getScript() Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+  <button id="loadScript">Load Script</button>
+  <div id="result"></div>
+
+  <script>
+    $(document).ready(function() {
+      $("#loadScript").click(function() {
+        $.getScript("p6.js", function() {
+          $("#result").html("Script loaded and executed.");
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

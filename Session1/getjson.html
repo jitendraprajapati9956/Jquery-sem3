@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery getJSON() Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+  <button id="loadData">Load Data</button>
+  <div id="result"></div>
+
+  <script>
+    $(document).ready(function() {
+      $("#loadData").click(function() {
+        $.getJSON("data.json", function(data) {
+          $("#result").html(JSON.stringify(data));
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

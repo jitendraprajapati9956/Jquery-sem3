@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Print Background Color</title>
+    <script src="jquery\jquery-3.7.1.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('#element1, #element2, #element3').each(function(){
+                console.log($(this).css('background-color'));
+            });
+
+            $('#element4, #element5, #element6').each(function(){
+                var width = $(this).width();
+                var height = $(this).height();
+                console.log('Width: ' + width + ', Height: ' + height);
+            });
+        });
+    </script>
+
+    
+    <style>
+        .redbg { background-color: red; color: aliceblue; font-size: medium;}
+        .bluebg { background-color: blue; color: aliceblue; font-size: large;}
+        .greenbg { background-color: green; color: aliceblue; font-size: larger;}
+   
+        #element4 { width: 100px; height: 100px; background-color: lightgrey; }
+        #element5 { width: 200px; height: 50px; background-color: lightcoral; }
+        #element6 { width: 150px; height: 150px; background-color: lightblue; }
+
+   </style>
+</head>
+<body>
+    <h2>Create Three HTML elements of different types and
+        background colors. jQuery code print background color of each element.</h2>
+   
+        <div class="redbg" id="element1">RED</div>
+        <p class="bluebg" id="element2">BLUE</p>
+        <span class="greenbg" id="element3">GREEN</span>
+    
+    <h2>Create Three HTML elements of different types and sizes.
+        jQuery code print size of each element.</h2>
+
+        <div id="element4">Element 4</div>
+        <p id="element5">Element 5</p>
+        <span id="element6">Element 6</span>
+  
+  </body>
+</html>

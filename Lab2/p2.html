@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="jquery\jquery-3.7.1.min.js"></script>
+   
+    <style>
+        .paragraph {
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            background-color: lightblue;
+            color: black;
+        }
+
+        .style2 {
+            font-size: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: green;
+            color: white;
+            font-style: italic;
+        }
+
+        .yellow-background {
+            background-color: yellow;
+        }
+        button {
+      background-color: #0404aa;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    #targetButton
+    {
+        background-color: #04aa07;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer; 
+    }
+    </style>
+   
+
+   <script>
+    $(document).ready(function() {
+        // a. Display Welcome Message on Button Click
+        $('#welcomeButton').click(function() {
+            $('#welcomeMessage').text('Welcome to the Web Page!');
+        });
+
+        // b. Change Background Color of Input Textboxes on Click
+        $('.color-change').focus(function() {
+            $(this).addClass('yellow-background');
+        }).blur(function() {
+            $(this).removeClass('yellow-background');
+        });
+
+        // c. & d. Toggle Paragraph Styles on Click and Button Click
+        $('#toggleStyleButton').click(function() {
+            $('#paragraph').toggleClass('style1 style2');
+        });
+
+        $('#paragraph').click(function() {
+            $(this).toggleClass('style1 style2');
+        });
+
+        // e. Set Button Value to Textbox Text on Button Click
+        $('#setTextButton').click(function() {
+            var textBoxValue = $('#textInput').val();
+            $('#targetButton').text(textBoxValue);
+        });
+    });
+</script>
+
+</head>
+<body>
+   <h1>Click Button to Display welcome message  </h1>
+    <button id="welcomeButton">Click Me</button><br><br>
+    <span id="welcomeMessage" style="color: red;"></span>
+    
+    <br>
+    <hr>
+    <h1>Three input textboxes. On click of each input box, change its background
+        color to yellow</h1>
+  
+    <input type="text" class="color-change"><br><br>
+    <input type="text" class="color-change"><br><br>
+    <input type="text" class="color-change"><br><br>
+
+    <br><br>
+    <hr>
+    <h1>Two style properties  default apply first one to a paragraph. On a
+        button click, change the paragraph style to other style</h1>
+    <p id="paragraph" class="paragraph">This is a paragraph.</p>
+    <button id="toggleStyleButton">Toggle Paragraph Style</button>
+
+    <br><br>
+    <hr>
+   
+    <h1>Create one button and a textbox. On button-click, set its value to the text written
+        in the text box</h1>
+    <input type="text" id="textInput"><br><br>
+    <button id="setTextButton">Set Button Text</button><br>
+    <button id="targetButton">Target Button</button>
+   
+    
+</body>
+</html>

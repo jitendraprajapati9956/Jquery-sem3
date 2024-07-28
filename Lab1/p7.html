@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Convert Text to Uppercase</title>
+    <script>
+        function convertToUppercase() {
+            var textBox = document.getElementById("textInput");
+            var upperCaseCheckbox = document.getElementById("upperCaseCheckbox");
+
+            if (upperCaseCheckbox.checked) {
+                textBox.value = textBox.value.toUpperCase();
+            } else {
+                textBox.value = textBox.value.toLowerCase(); // Optional: revert to lowercase when unchecked
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1 style="border-width:5px; border-style:solid;"> Click to check box Convert to Uppercase</h1>
+    <center>
+   <br>
+    <label for="textInput">Enter Anything:</label>
+    <input type="text" id="textInput" oninput="convertToUppercase()"><br><br>
+
+    <br>
+    <label for="upperCaseCheckbox">Click to check box Convert to Uppercase</label>
+    <input type="checkbox" id="upperCaseCheckbox" onclick="convertToUppercase()"><br><br>
+</center>
+</body>
+</html>

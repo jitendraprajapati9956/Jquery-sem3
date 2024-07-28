@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Manipulation</title>
+    <style>
+        .style1 { background-color: red; color: white; padding: 10px; }
+        .style2 { background-color: blue; color: white; padding: 10px; }
+        .style3 { background-color: green; color: white; padding: 10px; }
+        .toggleClass { border: 2px solid black; }
+    </style>
+</head>
+<body>
+    <h1>Create Three HTML elements of different types and
+        different CSS style class. jQuery code to find an element that contains a specified class.
+         toggle a specified class when an element is clicked.</h1>
+    <div class="style1" id="element1">Element 1</div>
+    <p class="style2" id="element2">Element 2</p>
+    <span class="style3" id="element3">Element 3</span>
+
+    <script src="jquery\jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // i. Find an element that contains a specified class
+            var elementWithClass = $('.style2');
+            console.log('Element with class "style2":', elementWithClass);
+
+            // ii. Toggle a specified class when an element is clicked
+            $('#element1, #element2, #element3').click(function(){
+                $(this).toggleClass('toggleClass');
+            });
+        });
+    </script>
+</body>
+</html>
